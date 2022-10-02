@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Pressable } from 'react-native'
 import React, {useState} from 'react'
 import { Ionicons } from '@expo/vector-icons';
-
+import { db } from '../../firebase';
 
 
 const AddButton = () => {
@@ -10,12 +10,24 @@ const AddButton = () => {
 
 
   const addArtToList= () =>{
-    
+
+    db.collection('MyArtWork').doc('LA').set({
+      name:'Los Angeles',
+      state:'CA',
+      country:'USA'
+    })
+    .then(() => {
+      console.log("Document successfully written!");
+  })
+  .catch((error) => {
+      console.error("Error writing document: ", error);
+  });
+
   }
 
-  
+
   return (
-    <Pressable  onPress={()=>{console.warn('working')}}>
+    <Pressable  onPress={addArtToList}>
     <Ionicons
     name="add-circle-outline"
     size={25}
