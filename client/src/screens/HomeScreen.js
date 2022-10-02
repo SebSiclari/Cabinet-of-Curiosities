@@ -10,6 +10,7 @@ import {
 import HomeItem from '../components/HomeItem';
 
 const HomeScreen = ({ exhibitionData }) => {
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.welcome}>Hello,{'\n'}Collector</Text>

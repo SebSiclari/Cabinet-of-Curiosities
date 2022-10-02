@@ -67,10 +67,11 @@ const LoginScreen = () => {
       </View>
 
       <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={handleLogin} style={styles.button}>
+        <TouchableOpacity testID='log-in-button' onPress={handleLogin} style={styles.button}>
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
         <TouchableOpacity
+          testID='register-button'
           onPress={handleSignUp}
           style={[styles.button, styles.buttonOutline]}
         >

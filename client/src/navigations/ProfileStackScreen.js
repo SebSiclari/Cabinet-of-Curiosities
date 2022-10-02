@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Ionicons, FontAwesome5 } from '@expo/vector-icons';
 import ProfileScreen from '../screens/ProfileScreen';
 import EditProfile from '../components/EditProfile';
+import MyArtWork from './MyArtWork';
 
 const Stack = createStackNavigator();
 
@@ -58,6 +59,14 @@ export default function ProfileStackScreen() {
           headerBackTitleVisible: false,
         }}
       />
+      <Stack.Screen
+      name='MyArtWork'
+      component={MyArtWork}
+      options={{
+          headerTitle: 'My ArtWork',
+          headerBackTitleVisible: false,
+        }}/>
+
     </Stack.Navigator>
   );
 }
