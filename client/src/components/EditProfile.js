@@ -15,6 +15,9 @@ import * as ImagePicker from 'expo-image-picker';
 import { useNavigation } from '@react-navigation/native';
 import { auth, db } from '../../firebase';
 
+
+
+  
 const EditProfile = ({ route }) => {
   const { profile, setProfile } = route.params;
   const [name, setName] = useState('');

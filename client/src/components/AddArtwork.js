@@ -16,6 +16,8 @@ import * as ImagePicker from 'expo-image-picker';
 import { auth, db } from '../../firebase';
 import { useNavigation } from '@react-navigation/native';
 
+// This is the  Add ArtWork Button in the top right in the ArtWork Screen
+
 const AddArtwork = ({ setArtworks }) => {
   const [artist, setArtist] = useState('');
   const [title, setTitle] = useState('');
@@ -27,7 +29,9 @@ const AddArtwork = ({ setArtworks }) => {
 
   const navigation = useNavigation();
 
-  const handlePickImage = async () => {
+  // This function lets you access local photos of the user so they
+  // can Select and Post
+    const handlePickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
@@ -39,6 +43,12 @@ const AddArtwork = ({ setArtworks }) => {
       setImage(result.uri);
     }
   };
+
+  // Collect Button
+
+
+  // TESTS FOR HANDLE SUBMIT
+
 
   const handleSubmit = async () => {
     const blob = await new Promise((resolve, reject) => {
@@ -53,6 +63,10 @@ const AddArtwork = ({ setArtworks }) => {
       xhr.open('GET', image, true);
       xhr.send(null);
     });
+
+    // FIREBASE CODE
+    // This sends the data that you input when you press the collect button
+    // to the Firebase database.
 
     const ref = Firebase.storage().ref().child(new Date().toISOString());
     const snapshot = ref.put(blob);
@@ -87,6 +101,8 @@ const AddArtwork = ({ setArtworks }) => {
           const id = dbRef.id;
           console.log(id);
 
+          // Thesere are the propertie sent to the firebase database when you click
+          // the collection button
           let saved = {
             id: id,
             artist: artist,
@@ -96,10 +112,11 @@ const AddArtwork = ({ setArtworks }) => {
             image: url,
           };
 
-          console.log('saved: ', saved);
 
           setArtworks((prev) => [...prev, saved]);
 
+
+          // We need to read the firebase doc for this.
           dbRef
             .set(saved)
             .then(() => {
@@ -113,6 +130,11 @@ const AddArtwork = ({ setArtworks }) => {
       },
     );
   };
+
+  // The ADD ARTWORK componenet is the whole adding and putting in iformation screen
+  // maybe we could break it up into smaller components
+  // for example makeng the text input a speeract componeent form the image
+  // and making the button its own component
 
   return (
     <View style={styles.container}>

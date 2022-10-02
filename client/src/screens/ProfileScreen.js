@@ -4,6 +4,7 @@ import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
 import { auth } from '../../firebase';
 import { UserContext } from '../contexts/UserContext';
 import { getProfile } from '../services/profileService';
+import { useNavigation } from '@react-navigation/native';
 import LoginScreen from './LoginScreen';
 
 const ProfileScreen = ({ profile, setProfile }) => {
@@ -27,6 +28,14 @@ const ProfileScreen = ({ profile, setProfile }) => {
       .catch((error) => console.log('[ERROR] ', error.message));
   };
 
+  const navigation= useNavigation()
+
+  const handleNavigation =()=>{
+
+    navigation.navigate('MyArtWork')
+
+  }
+
   return (
     <>
       {isLoggedIn ? (
@@ -40,6 +49,9 @@ const ProfileScreen = ({ profile, setProfile }) => {
           ) : (
             <Text style={styles.text}>Please edit your profile</Text>
           )}
+          <TouchableOpacity onPress={handleNavigation} style={styles.button}>
+            <Text style={styles.buttonText}>My ArtWork</Text>
+          </TouchableOpacity>
           <TouchableOpacity onPress={handleSignOut} style={styles.button}>
             <Text style={styles.buttonText}>Sign out</Text>
           </TouchableOpacity>
@@ -90,7 +102,7 @@ const styles = StyleSheet.create({
   },
   button: {
     width: '40%',
-    marginTop: 50,
+    marginTop: 30,
     padding: 15,
     alignItems: 'center',
     borderRadius: 30,

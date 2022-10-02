@@ -12,6 +12,21 @@ const ArtworkInfo = ({
 }) => {
   const navigation = useNavigation();
 
+  // Modal would be the pop up screen when you press the trash button
+
+  // Thsi is all the info/details of an artwork whci you are directed to
+  // when you clin on the image in the cabinet
+
+
+  // This is simply the delete/trash button at the top right
+
+  // Firebase method?
+
+  // Break this into componeents
+  // image
+  // description
+
+
   const handleDelete = async () => {
     let user = auth.currentUser;
     db.collection('users')
@@ -34,6 +49,9 @@ const ArtworkInfo = ({
 
     navigation.navigate('Artwork');
   };
+
+
+  
 
   return (
     <View style={styles.container}>

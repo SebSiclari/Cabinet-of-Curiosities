@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 
 const ExhibitionItem = ({ exhibition }) => {
+  
   const { title, poster } = exhibition;
 
   return (
