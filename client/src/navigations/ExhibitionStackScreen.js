@@ -3,6 +3,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 import ExhibitionScreen from '../screens/ExhibitionScreen';
 import ExhibitionInfo from '../components/ExhibitionInfo';
+import AddButton from '../components/AddButton';
 
 const Stack = createStackNavigator();
 
@@ -36,7 +37,10 @@ export default function ExhibitionStackScreen({ exhibitionData }) {
       <Stack.Screen
         name="ExhibitionInfo"
         component={ExhibitionInfo}
-        options={{ headerTitle: '' }}
+        options={{ headerTitle: "",
+        headerRight:()=><AddButton/>
+        }}
+
       />
     </Stack.Navigator>
   );

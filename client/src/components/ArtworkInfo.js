@@ -25,7 +25,7 @@ const ArtworkInfo = ({
   // Break this into componeents
   // image
   // description
-  
+
 
   const handleDelete = async () => {
     let user = auth.currentUser;
@@ -51,8 +51,7 @@ const ArtworkInfo = ({
   };
 
 
-  // so refactor and polish this code to make it look cleaner,
-  //
+  
 
   return (
     <View style={styles.container}>

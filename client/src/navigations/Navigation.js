@@ -8,7 +8,7 @@ import ExhibitionStackScreen from '../navigations/ExhibitionStackScreen';
 import ArtworkStackScreen from '../navigations/ArtworkStackScreen';
 import TicketStackScreen from '../navigations/TicketStackScreen';
 import ProfileStackScreen from '../navigations/ProfileStackScreen';
-import MyArtWork from './MyArtWork';
+import MyArtWork from '../screens/MyArtWork'
 
 const Tab = createBottomTabNavigator();
 

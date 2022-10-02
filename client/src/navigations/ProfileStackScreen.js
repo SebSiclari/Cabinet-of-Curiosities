@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Ionicons, FontAwesome5 } from '@expo/vector-icons';
 import ProfileScreen from '../screens/ProfileScreen';
 import EditProfile from '../components/EditProfile';
-import MyArtWork from './MyArtWork';
+import MyArtWork from '../screens/MyArtWork';
 
 const Stack = createStackNavigator();
 
