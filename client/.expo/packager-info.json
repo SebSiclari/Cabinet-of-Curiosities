@@ -1,9 +1,9 @@
 {
-  "expoServerPort": null,
+  "expoServerPort": 19000,
   "packagerPort": 19000,
   "expoServerNgrokUrl": "https://ew-vkh.anonymous.client.exp.direct",
   "packagerNgrokUrl": "https://ew-vkh.anonymous.client.exp.direct",
-  "ngrokPid": 8688,
+  "ngrokPid": 712,
   "packagerPid": null,
   "webpackServerPort": null
 }

@@ -1,4 +1,5 @@
-import * as Firebase from 'firebase';
+/* eslint-disable prettier/prettier */
+import Firebase from 'firebase'
 
 // Your web app’s Firebase configuration
 const firebaseConfig = {
@@ -9,6 +10,7 @@ const firebaseConfig = {
   messagingSenderId: '256047849920',
   appId: '1:256047849920:web:c0b3394ca763e8c0772825',
 };
+
 let app;
 if (Firebase.apps.length === 0) {
   app = Firebase.initializeApp(firebaseConfig);
@@ -18,4 +20,6 @@ if (Firebase.apps.length === 0) {
 const auth = Firebase.auth();
 const db = Firebase.firestore();
 
-export { auth, db, firebaseConfig };
+
+
+export { auth, db, firebaseConfig, app };
