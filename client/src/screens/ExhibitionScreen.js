@@ -5,7 +5,7 @@ import ExhibitionItem from '../components/ExhibitionItem';
 
 const ExhibitionScreen = ({ exhibitionData }) => {
 
-  
+
 
 
   return (
@@ -15,7 +15,7 @@ const ExhibitionScreen = ({ exhibitionData }) => {
           data={exhibitionData.records}
           keyExtractor={(item, index) => index}
           renderItem={({ item }) => {
-            return <ExhibitionItem testID='exhibition-item' key={item.id}  exhibition={item} />;
+            return <ExhibitionItem key={item.id}  exhibition={item} />;
           }}
         />
       </View>

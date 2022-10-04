@@ -9,6 +9,11 @@ The "packager-info.json" file contains port numbers and process PIDs that are us
 > What does the "settings.json" file contain?
 
 The "settings.json" file contains the server configuration that is used to serve the application manifest.
+> What do the files contain?
+
+- "devices.json": contains information about devices that have recently opened this project. This is used to populate the "Development sessions" list in your development builds.
+- "packager-info.json": contains port numbers and process PIDs that are used to serve the application to the mobile device/simulator.
+- "settings.json": contains the server configuration that is used to serve the application manifest.
 
 > Should I commit the ".expo" folder?
 
