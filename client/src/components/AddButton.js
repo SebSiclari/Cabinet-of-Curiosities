@@ -1,20 +1,49 @@
 import { StyleSheet, Text, View, Pressable } from 'react-native'
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { Ionicons } from '@expo/vector-icons';
 import { db } from '../../firebase';
 
 
-const AddButton = () => {
+const AddButton = ({exhibitionData}) => {
+
+  const [title, setTitle]=useState(null);
+  const [poster,setPoster]=useState(null)
+  const [begindate, setBeginDate] = useState(null)
+  const [enddate, setEndDate]= useState(null)
+  const [venues, setVenues]= useState(null)
+
+
+const setData=async ()=>{
+   await setTitle(exhibitionData.records.map(item=> item.title));
+   await setPoster(exhibitionData.records.map(item=> item.poster))
+   await setBeginDate(exhibitionData.records.map(item=> item.begindate));
+   await setEndDate(exhibitionData.records.map(item=> item.enddate));
+   await setVenues(exhibitionData.records.map(item=> item.venues.map(item=>item.fullname) ));
+}
+
+
+useEffect(()=>{
+  setData()
+},[])
+
+// console.warn(title)
+
+console.warn(venues)
+
+
+
 
   const [isFav, setIsFav]= useState([]);
 
 
   const addArtToList= () =>{
 
-    db.collection('MyArtWork').doc('LA').set({
-      name:'Los Angeles',
-      state:'CA',
-      country:'USA'
+    db.collection('MyArtWork').add({
+      title: title,
+      begindate: begindate,
+      enddate: enddate,
+      venues: venues,
+
     })
     .then(() => {
       console.log("Document successfully written!");

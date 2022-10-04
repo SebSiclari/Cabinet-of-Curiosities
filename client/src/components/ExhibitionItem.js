@@ -11,6 +11,9 @@ import { useNavigation } from '@react-navigation/native';
 
 const ExhibitionItem = ({ exhibition }) => {
   const { title, poster, begindate, enddate, venues } = exhibition;
+
+  
+
   const navigation = useNavigation();
 
   return (
@@ -30,14 +33,14 @@ const ExhibitionItem = ({ exhibition }) => {
           style={styles.items}
           imageStyle={{ opacity: 0.35 }}
         >
-          <Text style={styles.title}>{title}</Text>
+          <Text testID='exhibition-item-title' style={styles.title}>{title}</Text>
           {/* <View style={styles.date_container}> */}
           <Text style={styles.textContainer}>
-            <Text style={styles.date}>
+            <Text testID='exhibition-date' style={styles.date}>
               {begindate} <Text style={styles.date_mark}> to </Text> {enddate}{' '}
             </Text>
             {`\n`}
-            <Text style={styles.venue}>
+            <Text testID='exhibition-vanue' style={styles.venue}>
               {venues.map((item) => item.fullname)}
             </Text>
           </Text>

@@ -1,13 +1,17 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import { Ionicons } from '@expo/vector-icons';
-
+import {useState, useEffect} from 'react'
 import ExhibitionScreen from '../screens/ExhibitionScreen';
 import ExhibitionInfo from '../components/ExhibitionInfo';
 import AddButton from '../components/AddButton';
+import { getActionFromState } from '@react-navigation/native';
 
 const Stack = createStackNavigator();
 
 export default function ExhibitionStackScreen({ exhibitionData }) {
+
+
+
   return (
     <Stack.Navigator
       screenOptions={{
@@ -31,14 +35,14 @@ export default function ExhibitionStackScreen({ exhibitionData }) {
         },
       }}
     >
-      <Stack.Screen name="Current">
+      <Stack.Screen  name="Current">
         {(props) => <ExhibitionScreen exhibitionData={exhibitionData} />}
       </Stack.Screen>
       <Stack.Screen
         name="ExhibitionInfo"
         component={ExhibitionInfo}
         options={{ headerTitle: "",
-        headerRight:()=><AddButton/>
+        headerRight:()=><AddButton exhibitionData={exhibitionData}/>
         }}
 
       />

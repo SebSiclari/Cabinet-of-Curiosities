@@ -8,12 +8,13 @@ import {
 } from 'react-native';
 
 const ExhibitionItem = ({ exhibition }) => {
-  
+
   const { title, poster } = exhibition;
 
   return (
     <View style={styles.container}>
       <ImageBackground
+        testID='home-item'
         resizeMode="cover"
         source={{ uri: poster.imageurl }}
         style={styles.items}
