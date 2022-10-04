@@ -9,16 +9,17 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const ExhibitionItem = ({ exhibition }) => {
+const ExhibitionItem = ({ exhibition, setCurrent }) => {
   const { title, poster, begindate, enddate, venues } = exhibition;
 
-  
+
 
   const navigation = useNavigation();
 
   return (
     <Pressable
       onPress={() => {
+        setCurrent(exhibition)
         navigation.navigate('ExhibitionInfo', { exhibition });
       }}
     >

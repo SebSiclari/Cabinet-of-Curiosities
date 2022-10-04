@@ -4,11 +4,10 @@ import { useNavigation } from '@react-navigation/native';
 import { Ionicons, FontAwesome5 } from '@expo/vector-icons';
 import ProfileScreen from '../screens/ProfileScreen';
 import EditProfile from '../components/EditProfile';
-import MyArtWork from '../screens/MyArtWork';
-
+import ExhibitionScreen from '../screens/ExhibitionScreen';
 const Stack = createStackNavigator();
 
-export default function ProfileStackScreen() {
+export default function ProfileStackScreen({wishList, exhibitionData, setCurrent}) {
   const [profile, setProfile] = useState([]);
   const navigation = useNavigation();
   return (
@@ -49,7 +48,7 @@ export default function ProfileStackScreen() {
           ),
         }}
       >
-        {(props) => <ProfileScreen profile={profile} setProfile={setProfile} />}
+        {(props) => <ProfileScreen wishList={wishList} profile={profile} setProfile={setProfile} />}
       </Stack.Screen>
       <Stack.Screen
         name="EditProfile"
@@ -60,12 +59,14 @@ export default function ProfileStackScreen() {
         }}
       />
       <Stack.Screen
-      name='MyArtWork'
-      component={MyArtWork}
+      name='ExhibitionStackScreen'
       options={{
           headerTitle: 'My ArtWork',
           headerBackTitleVisible: false,
-        }}/>
+        }}>
+
+          {(props)=><ExhibitionScreen exhibitionData={exhibitionData} wishList={wishList} setCurrent={setCurrent}/>}
+        </Stack.Screen>
 
     </Stack.Navigator>
   );

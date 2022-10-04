@@ -8,8 +8,7 @@ import { getActionFromState } from '@react-navigation/native';
 
 const Stack = createStackNavigator();
 
-export default function ExhibitionStackScreen({ exhibitionData }) {
-
+export default function ExhibitionStackScreen({ wishList, exhibitionData, current, setCurrent, setWishList }) {
 
 
   return (
@@ -36,13 +35,13 @@ export default function ExhibitionStackScreen({ exhibitionData }) {
       }}
     >
       <Stack.Screen  name="Current">
-        {(props) => <ExhibitionScreen exhibitionData={exhibitionData} />}
+        {(props) => <ExhibitionScreen wishList={wishList} setCurrent={setCurrent} exhibitionData={exhibitionData} />}
       </Stack.Screen>
       <Stack.Screen
         name="ExhibitionInfo"
         component={ExhibitionInfo}
         options={{ headerTitle: "",
-        headerRight:()=><AddButton exhibitionData={exhibitionData}/>
+        headerRight:()=><AddButton current={current} setWishList={setWishList} />
         }}
 
       />

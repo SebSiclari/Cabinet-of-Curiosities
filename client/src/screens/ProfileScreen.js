@@ -7,7 +7,7 @@ import { getProfile } from '../services/profileService';
 import { useNavigation } from '@react-navigation/native';
 import LoginScreen from './LoginScreen';
 
-const ProfileScreen = ({ profile, setProfile }) => {
+const ProfileScreen = ({ profile, setProfile, wishList }) => {
   const { isLoggedIn, setIsLoggedIn } = useContext(UserContext);
 
   async function updateProfile() {
@@ -32,7 +32,7 @@ const ProfileScreen = ({ profile, setProfile }) => {
 
   const handleNavigation =()=>{
 
-    navigation.navigate('MyArtWork')
+   navigation.navigate('ExhibitionStackScreen', {wishList});
 
   }
 

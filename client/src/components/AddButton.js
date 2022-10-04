@@ -4,47 +4,12 @@ import { Ionicons } from '@expo/vector-icons';
 import { db } from '../../firebase';
 
 
-const AddButton = ({exhibitionData}) => {
+const AddButton = ({setWishList, current}) => {
 
-  const [title, setTitle]=useState(null);
-  const [poster,setPoster]=useState(null)
-  const [begindate, setBeginDate] = useState(null)
-  const [enddate, setEndDate]= useState(null)
-  const [venues, setVenues]= useState(null)
-
-
-const setData=async ()=>{
-   await setTitle(exhibitionData.records.map(item=> item.title));
-   await setPoster(exhibitionData.records.map(item=> item.poster))
-   await setBeginDate(exhibitionData.records.map(item=> item.begindate));
-   await setEndDate(exhibitionData.records.map(item=> item.enddate));
-   await setVenues(exhibitionData.records.map(item=> item.venues.map(item=>item.fullname) ));
-}
-
-
-useEffect(()=>{
-  setData()
-},[])
-
-// console.warn(title)
-
-console.warn(venues)
-
-
-
-
-  const [isFav, setIsFav]= useState([]);
-
-
+  console.warn(current)
   const addArtToList= () =>{
-
-    db.collection('MyArtWork').add({
-      title: title,
-      begindate: begindate,
-      enddate: enddate,
-      venues: venues,
-
-    })
+    // setWishList(prev=>[...prev, current]);
+    db.collection('MyArtWork').add(current)
     .then(() => {
       console.log("Document successfully written!");
   })

@@ -2,9 +2,9 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 61323,
-  "expoServerNgrokUrl": "https://ac-fhh.sebsiclari.client.exp.direct",
-  "packagerNgrokUrl": "https://packager.ac-fhh.sebsiclari.client.exp.direct",
-  "ngrokPid": 97330,
+  "packagerPid": 33936,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
   "webpackServerPort": 19006
 }
