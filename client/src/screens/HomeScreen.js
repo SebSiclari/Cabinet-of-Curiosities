@@ -12,16 +12,16 @@ import HomeItem from '../components/HomeItem';
 const HomeScreen = ({ exhibitionData }) => {
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Text style={styles.welcome}>Hello,{'\n'}Collector</Text>
-      <Text style={styles.text}>Highlights</Text>
+    <SafeAreaView testID='Home' style={styles.container}>
+      <Text testID='hello-collector'style={styles.welcome}>Hello,{'\n'}Collector</Text>
+      <Text testID='highlights-text' style={styles.text}>Highlights</Text>
       <View style={styles.exhibition_container}>
         <FlatList
           horizontal
           data={exhibitionData.records}
           keyExtractor={(item, index) => index}
           renderItem={({ item }) =>
-            item.poster && <HomeItem key={item.id} exhibition={item} />
+            item.poster && <HomeItem  key={item.id} exhibition={item} />
           }
           snapToAlignment="start"
           decelerationRate={'fast'}
