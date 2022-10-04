@@ -5,6 +5,8 @@ import { AntDesign } from '@expo/vector-icons';
 const ExhibitionInfo = ({ route }) => {
   const { exhibition } = route.params;
 
+  console.warn({exhibition})
+
   return (
     <ScrollView>
       <View style={styles.exhibitionContainer}>

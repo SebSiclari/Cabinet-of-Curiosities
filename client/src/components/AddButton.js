@@ -6,27 +6,26 @@ import { db } from '../../firebase';
 
 const AddButton = ({exhibitionData}) => {
 
-  const [title, setTitle]=useState(null);
-  const [poster,setPoster]=useState(null)
-  const [begindate, setBeginDate] = useState(null)
-  const [enddate, setEndDate]= useState(null)
+  const [title, setFavTitle]=useState(null);
+  const [poster,setFavPoster]=useState(null)
+  const [begindate, setFavBeginDate] = useState(null)
+  const [enddate, setFavEndDate]= useState(null)
   const [venues, setVenues]= useState(null)
 
 
 const setData=async ()=>{
-   await setTitle(exhibitionData.records.map(item=> item.title));
-   await setPoster(exhibitionData.records.map(item=> item.poster))
-   await setBeginDate(exhibitionData.records.map(item=> item.begindate));
-   await setEndDate(exhibitionData.records.map(item=> item.enddate));
-   await setVenues(exhibitionData.records.map(item=> item.venues.map(item=>item.fullname) ));
+   await setFavTitle(exhibitionData.records.map(item=> item.title));
+   await setFavPoster(exhibitionData.records.map(item=> item.poster))
+   await setFavBeginDate(exhibitionData.records.map(item=> item.begindate));
+   await setFavEndDate(exhibitionData.records.map(item=> item.enddate));
+//    await setVenues(exhibitionData.records.map(item=> item.venues.map(item=>item.fullname) ));
+// }
 }
-
 
 useEffect(()=>{
   setData()
 },[])
 
-// console.warn(title)
 
 console.warn(venues)
 
@@ -41,8 +40,7 @@ console.warn(venues)
     db.collection('MyArtWork').add({
       title: title,
       begindate: begindate,
-      enddate: enddate,
-      venues: venues,
+      enddate: enddate
 
     })
     .then(() => {
