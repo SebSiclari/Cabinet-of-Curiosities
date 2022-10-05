@@ -28,7 +28,7 @@ export default function Navigation() {
         console.log(doc.id, " => ",  doc.data());
         setWishList(prev=> [...prev, doc.data()])
     });
-    console.warn(wishList)
+    // console.warn(wishList)
 
     }).catch((error) => {
         console.log("Error getting document:", error);

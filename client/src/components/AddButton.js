@@ -9,7 +9,7 @@ const AddButton = ({setWishList, current}) => {
 
   const [isFav, setIsFav]= useState(false)
 
-  console.warn(current)
+  
 
 
   const addArtToList= () =>{
