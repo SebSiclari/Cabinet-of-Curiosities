@@ -12,7 +12,7 @@ const ExhibitionScreen = ({ exhibitionData, setCurrent, wishList }) => {
     <SafeAreaView >
       <View style={{ backgroundColor: 'FFFFF3' }}>
         <FlatList
-          data={exhibitionData.records ? exhibitionData.records: wishList}
+          data={ !exhibitionData.records.length ? wishList: exhibitionData.records}
           keyExtractor={(item, index) => index}
           renderItem={({ item }) => {
             return <ExhibitionItem  key={item.id} setCurrent={setCurrent} exhibition={item} />;

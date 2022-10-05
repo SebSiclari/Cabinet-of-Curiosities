@@ -65,7 +65,7 @@ export default function ProfileStackScreen({wishList, exhibitionData, setCurrent
           headerBackTitleVisible: false,
         }}>
 
-          {(props)=><ExhibitionScreen exhibitionData={exhibitionData} wishList={wishList} setCurrent={setCurrent}/>}
+          {(props)=><ExhibitionScreen exhibitionData={wishList} setCurrent={setCurrent}/>}
         </Stack.Screen>
 
     </Stack.Navigator>
