@@ -3,7 +3,8 @@ import { SafeAreaView, View, FlatList } from 'react-native';
 
 import ExhibitionItem from '../components/ExhibitionItem';
 
-const ExhibitionScreen = ({ exhibitionData }) => {
+const ExhibitionScreen = ({ exhibitionData, setCurrent, wishList }) => {
+
 
 
 
@@ -12,10 +13,10 @@ const ExhibitionScreen = ({ exhibitionData }) => {
     <SafeAreaView >
       <View style={{ backgroundColor: 'FFFFF3' }}>
         <FlatList
-          data={exhibitionData.records}
+          data={ exhibitionData ? exhibitionData.records : wishList}
           keyExtractor={(item, index) => index}
           renderItem={({ item }) => {
-            return <ExhibitionItem key={item.id}  exhibition={item} />;
+            return <ExhibitionItem  key={item.id} setCurrent={setCurrent} exhibition={item} />;
           }}
         />
       </View>

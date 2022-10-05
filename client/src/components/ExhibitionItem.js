@@ -9,16 +9,19 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const ExhibitionItem = ({ exhibition }) => {
+const ExhibitionItem = ({ exhibition, setCurrent }) => {
   const { title, poster, begindate, enddate, venues } = exhibition;
 
-  
+  console.warn(venues)
+
+
 
   const navigation = useNavigation();
 
   return (
     <Pressable
       onPress={() => {
+        setCurrent(exhibition)
         navigation.navigate('ExhibitionInfo', { exhibition });
       }}
     >
@@ -34,7 +37,6 @@ const ExhibitionItem = ({ exhibition }) => {
           imageStyle={{ opacity: 0.35 }}
         >
           <Text testID='exhibition-item-title' style={styles.title}>{title}</Text>
-          {/* <View style={styles.date_container}> */}
           <Text style={styles.textContainer}>
             <Text testID='exhibition-date' style={styles.date}>
               {begindate} <Text style={styles.date_mark}> to </Text> {enddate}{' '}

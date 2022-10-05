@@ -7,7 +7,7 @@ import { getProfile } from '../services/profileService';
 import { useNavigation } from '@react-navigation/native';
 import LoginScreen from './LoginScreen';
 
-const ProfileScreen = ({ profile, setProfile }) => {
+const ProfileScreen = ({ profile, setProfile, wishList }) => {
   const { isLoggedIn, setIsLoggedIn } = useContext(UserContext);
 
   async function updateProfile() {
@@ -32,7 +32,7 @@ const ProfileScreen = ({ profile, setProfile }) => {
 
   const handleNavigation =()=>{
 
-    navigation.navigate('MyArtWork')
+   navigation.navigate('ExhibitionStackScreen', {wishList});
 
   }
 
@@ -50,7 +50,7 @@ const ProfileScreen = ({ profile, setProfile }) => {
             <Text style={styles.text}>Please edit your profile</Text>
           )}
           <TouchableOpacity onPress={handleNavigation} style={styles.button}>
-            <Text style={styles.buttonText}>My ArtWork</Text>
+            <Text style={styles.buttonText}> My ArtWork</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={handleSignOut} style={styles.button}>
             <Text style={styles.buttonText}>Sign out</Text>

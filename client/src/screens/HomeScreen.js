@@ -34,7 +34,7 @@ const HomeScreen = ({ exhibitionData }) => {
 
 const styles = StyleSheet.create({
   container: {
-    felx: 1,
+    flex: 1,
   },
   welcome: {
     fontFamily: 'Poppins-SemiBold',

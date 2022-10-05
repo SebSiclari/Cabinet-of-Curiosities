@@ -8,12 +8,41 @@ import ExhibitionStackScreen from '../navigations/ExhibitionStackScreen';
 import ArtworkStackScreen from '../navigations/ArtworkStackScreen';
 import TicketStackScreen from '../navigations/TicketStackScreen';
 import ProfileStackScreen from '../navigations/ProfileStackScreen';
-import MyArtWork from '../screens/MyArtWork'
+import { db } from '../../firebase';
+// import MyArtWork from '../screens/MyArtWork'
 
 const Tab = createBottomTabNavigator();
 
 export default function Navigation() {
   const [exhibitionData, setExhibitionData] = useState('');
+  const [wishList, setWishList]= useState([])
+  const [current, setCurrent] = useState([])
+
+
+
+  const getWishList= async() => {
+
+    try{
+     const data= await db.collection('MyArtWork').get().then((querySnapshot) => {
+       querySnapshot.forEach((doc) => {
+        console.log(doc.id, " => ",  doc.data());
+        setWishList(prev=> [...prev, doc.data()])
+    });
+    // console.warn(wishList)
+
+    }).catch((error) => {
+        console.log("Error getting document:", error);
+    });
+
+    }
+
+    catch(e){
+      console.log(e);
+    }
+  }
+
+
+
 
   const fetchData = async () => {
     try {
@@ -26,7 +55,10 @@ export default function Navigation() {
 
   useEffect(() => {
     fetchData();
+    getWishList();
   }, []);
+
+
 
   return (
     <NavigationContainer>
@@ -55,13 +87,12 @@ export default function Navigation() {
           name="current"
           options={{
             unmountOnBlur: true,
-            // tabBarLabel: 'Current',
             tabBarIcon: ({ color, size }) => (
               <MaterialIcons name="museum" color={color} size={size} />
             ),
           }}
         >
-          {(props) => <ExhibitionStackScreen exhibitionData={exhibitionData} />}
+          {(props) => <ExhibitionStackScreen wishList={wishList} setWishList={setWishList} current={current} setCurrent={setCurrent}  exhibitionData={exhibitionData} />}
         </Tab.Screen>
         <Tab.Screen
           name="ArtworkTab"
@@ -86,15 +117,15 @@ export default function Navigation() {
         />
         <Tab.Screen
           name="ProfileTab"
-          component={ProfileStackScreen}
           options={{
             unmountOnBlur: true,
-            // tabBarLabel: 'Profile',
             tabBarIcon: ({ color, size }) => (
               <Ionicons name="person" color={color} size={size} />
             ),
           }}
-        />
+       >
+       {(props)=> <ProfileStackScreen wishList={wishList} />}
+       </Tab.Screen>
       </Tab.Navigator>
     </NavigationContainer>
   );

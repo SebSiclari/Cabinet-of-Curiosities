@@ -4,61 +4,49 @@ import { Ionicons } from '@expo/vector-icons';
 import { db } from '../../firebase';
 
 
-const AddButton = ({exhibitionData}) => {
-
-  const [title, setFavTitle]=useState(null);
-  const [poster,setFavPoster]=useState(null)
-  const [begindate, setFavBeginDate] = useState(null)
-  const [enddate, setFavEndDate]= useState(null)
-  const [venues, setVenues]= useState(null)
+const AddButton = ({setWishList, current}) => {
 
 
-const setData=async ()=>{
-   await setFavTitle(exhibitionData.records.map(item=> item.title));
-   await setFavPoster(exhibitionData.records.map(item=> item.poster))
-   await setFavBeginDate(exhibitionData.records.map(item=> item.begindate));
-   await setFavEndDate(exhibitionData.records.map(item=> item.enddate));
-//    await setVenues(exhibitionData.records.map(item=> item.venues.map(item=>item.fullname) ));
-// }
-}
-
-useEffect(()=>{
-  setData()
-},[])
+  const [isFav, setIsFav]= useState(false)
 
 
-console.warn(venues)
-
-
-
-
-  const [isFav, setIsFav]= useState([]);
 
 
   const addArtToList= () =>{
-
-    db.collection('MyArtWork').add({
-      title: title,
-      begindate: begindate,
-      enddate: enddate
-
-    })
+    // setWishList(prev=>[...prev, current]);
+    setIsFav(true)
+    db.collection('MyArtWork').add(current)
     .then(() => {
       console.log("Document successfully written!");
   })
   .catch((error) => {
       console.error("Error writing document: ", error);
-  });
+  })
+}
 
+
+  const handleRemove= () => {
+    if(isFav){
+    setIsFav(false)
+  //   db.collection('MyArtWork').doc(current.id).delete().then(() => {
+  //     console.log("Document successfully deleted!");
+  // }).catch((error) => {
+  //     console.error("Error removing document: ", error);
+  // });
+}
   }
 
 
   return (
-    <Pressable  onPress={addArtToList}>
-    <Ionicons
+    <Pressable  onPress={ isFav ? handleRemove : addArtToList}>
+   { isFav ? <Ionicons
+    name="add-circle"
+    size={25}
+    style={{marginRight:10, marginBottom:10, color:'white'}} /> : <Ionicons
     name="add-circle-outline"
     size={25}
     style={{marginRight:10, marginBottom:10, color:'white'}} />
+    }
     </Pressable>
   )
 }
