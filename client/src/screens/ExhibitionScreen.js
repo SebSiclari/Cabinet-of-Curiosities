@@ -5,14 +5,15 @@ import ExhibitionItem from '../components/ExhibitionItem';
 
 const ExhibitionScreen = ({ exhibitionData, setCurrent, wishList }) => {
 
-  console.warn(wishList)
+
+
 
 
   return (
     <SafeAreaView >
       <View style={{ backgroundColor: 'FFFFF3' }}>
         <FlatList
-          data={ !exhibitionData.records.length ? wishList: exhibitionData.records}
+          data={ !exhibitionData ? wishList : exhibitionData.records}
           keyExtractor={(item, index) => index}
           renderItem={({ item }) => {
             return <ExhibitionItem  key={item.id} setCurrent={setCurrent} exhibition={item} />;

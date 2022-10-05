@@ -50,7 +50,7 @@ const ProfileScreen = ({ profile, setProfile, wishList }) => {
             <Text style={styles.text}>Please edit your profile</Text>
           )}
           <TouchableOpacity onPress={handleNavigation} style={styles.button}>
-            <Text style={styles.buttonText}>My ArtWork</Text>
+            <Text style={styles.buttonText}> My ArtWork</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={handleSignOut} style={styles.button}>
             <Text style={styles.buttonText}>Sign out</Text>

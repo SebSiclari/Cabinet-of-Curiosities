@@ -117,14 +117,15 @@ export default function Navigation() {
         />
         <Tab.Screen
           name="ProfileTab"
-          component = {ProfileStackScreen}
           options={{
             unmountOnBlur: true,
             tabBarIcon: ({ color, size }) => (
               <Ionicons name="person" color={color} size={size} />
             ),
           }}
-       />
+       >
+       {(props)=> <ProfileStackScreen wishList={wishList} />}
+       </Tab.Screen>
       </Tab.Navigator>
     </NavigationContainer>
   );

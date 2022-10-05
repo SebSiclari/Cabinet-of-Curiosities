@@ -5,6 +5,7 @@ import { Ionicons, FontAwesome5 } from '@expo/vector-icons';
 import ProfileScreen from '../screens/ProfileScreen';
 import EditProfile from '../components/EditProfile';
 import ExhibitionScreen from '../screens/ExhibitionScreen';
+
 const Stack = createStackNavigator();
 
 export default function ProfileStackScreen({wishList, exhibitionData, setCurrent}) {
@@ -65,7 +66,7 @@ export default function ProfileStackScreen({wishList, exhibitionData, setCurrent
           headerBackTitleVisible: false,
         }}>
 
-          {(props)=><ExhibitionScreen exhibitionData={wishList} setCurrent={setCurrent}/>}
+          {(props)=><ExhibitionScreen wishList={wishList} setCurrent={setCurrent}/>}
         </Stack.Screen>
 
     </Stack.Navigator>
