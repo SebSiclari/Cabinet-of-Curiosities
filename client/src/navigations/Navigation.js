@@ -15,34 +15,25 @@ const Tab = createBottomTabNavigator();
 
 export default function Navigation() {
   const [exhibitionData, setExhibitionData] = useState('');
-  const [wishList, setWishList]= useState([])
-  const [current, setCurrent] = useState([])
+  const [wishList, setWishList] = useState([]);
+  const [current, setCurrent] = useState([]);
 
-
-
-  const getWishList= async() => {
-
-    try{
-     const data= await db.collection('MyArtWork').get().then((querySnapshot) => {
-       querySnapshot.forEach((doc) => {
-        console.log(doc.id, " => ",  doc.data());
-        setWishList(prev=> [...prev, doc.data()])
-    });
-    // console.warn(wishList)
-
-    }).catch((error) => {
-        console.log("Error getting document:", error);
-    });
-
-    }
-
-    catch(e){
+  const getWishList = async () => {
+    try {
+      const data = await db
+        .collection('MyArtWork')
+        .get()
+        .then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            console.log(doc.id, ' => ', doc.data());
+            setWishList((prev) => [...prev, doc.data()]);
+          });
+        })
+        
+    } catch (e) {
       console.log(e);
     }
-  }
-
-
-
+  };
 
   const fetchData = async () => {
     try {
@@ -57,8 +48,6 @@ export default function Navigation() {
     fetchData();
     getWishList();
   }, []);
-
-
 
   return (
     <NavigationContainer>
@@ -92,7 +81,15 @@ export default function Navigation() {
             ),
           }}
         >
-          {(props) => <ExhibitionStackScreen wishList={wishList} setWishList={setWishList} current={current} setCurrent={setCurrent}  exhibitionData={exhibitionData} />}
+          {(props) => (
+            <ExhibitionStackScreen
+              wishList={wishList}
+              setWishList={setWishList}
+              current={current}
+              setCurrent={setCurrent}
+              exhibitionData={exhibitionData}
+            />
+          )}
         </Tab.Screen>
         <Tab.Screen
           name="ArtworkTab"
@@ -123,9 +120,9 @@ export default function Navigation() {
               <Ionicons name="person" color={color} size={size} />
             ),
           }}
-       >
-       {(props)=> <ProfileStackScreen wishList={wishList} />}
-       </Tab.Screen>
+        >
+          {(props) => <ProfileStackScreen wishList={wishList} />}
+        </Tab.Screen>
       </Tab.Navigator>
     </NavigationContainer>
   );

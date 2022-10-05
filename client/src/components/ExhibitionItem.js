@@ -10,6 +10,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 
 const ExhibitionItem = ({ exhibition, setCurrent }) => {
+
   const { title, poster, begindate, enddate, venues } = exhibition;
 
   console.warn(venues)
@@ -42,8 +43,8 @@ const ExhibitionItem = ({ exhibition, setCurrent }) => {
               {begindate} <Text style={styles.date_mark}> to </Text> {enddate}{' '}
             </Text>
             {`\n`}
-            <Text testID='exhibition-vanue' style={styles.venue}>
-              {venues.map((item) => item.fullname)}
+            <Text  style={styles.venue}>
+              {venues ? venues.map((item) =>  item.fullname) : null}
             </Text>
           </Text>
         </ImageBackground>

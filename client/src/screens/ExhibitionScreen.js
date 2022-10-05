@@ -14,7 +14,7 @@ const ExhibitionScreen = ({ exhibitionData, setCurrent, wishList }) => {
       <View style={{ backgroundColor: 'FFFFF3' }}>
         <FlatList
           data={ exhibitionData ? exhibitionData.records : wishList}
-          keyExtractor={(item, index) => index}
+          keyExtractor={(item) => item}
           renderItem={({ item }) => {
             return <ExhibitionItem  key={item.id} setCurrent={setCurrent} exhibition={item} />;
           }}

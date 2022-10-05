@@ -13,7 +13,6 @@ const AddButton = ({setWishList, current}) => {
 
 
   const addArtToList= () =>{
-    // setWishList(prev=>[...prev, current]);
     setIsFav(true)
     db.collection('MyArtWork').add(current)
     .then(() => {
